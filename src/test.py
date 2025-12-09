@@ -15,7 +15,10 @@ def test():
     logger.info("Running test function")
     ENV_1 = os.getenv("EXT_1", "")
     logger.info("Test log message %s", ENV_1)
-    assert ENV_1 == "default_value", f"ENV_1 is {ENV_1}, expected 'expected_value'"
-
+    try:
+        assert ENV_1 == "default_value", f"ENV_1 is {ENV_1}, expected 'expected_value'"
+    except AssertionError as e:
+        logger.error("AssertionError: %s", e)
+        raise
 if __name__ == "__main__":
     test()
