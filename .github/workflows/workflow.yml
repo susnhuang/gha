@@ -30,3 +30,4 @@ jobs:
         env:
           EXT_1: "default_value"
           BRANCH_NAME: ${{ github.ref_name }} # Pass the branch name context as an environment variable
+          PYTHONUNBUFFERED: "1"
