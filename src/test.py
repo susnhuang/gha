@@ -12,5 +12,6 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def test():
-    ENV_1 = os.getenv()
+    ENV_1 = os.getenv("EXT_1", "")
     logger.info("Test log message %s", ENV_1)
+    assert ENV_1 == "default_value", f"ENV_1 is {ENV_1}, expected 'expected_value'"
