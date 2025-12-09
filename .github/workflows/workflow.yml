@@ -26,6 +26,7 @@ jobs:
 
       - name: Execute Python script with branch name env var
         # The GITHUB_REF_NAME variable is automatically available as an environment variable
-        run: python your_script.py
+        run: python src/test.py
         env:
+          EXT_1: "default_value"
           BRANCH_NAME: ${{ github.ref_name }} # Pass the branch name context as an environment variable
