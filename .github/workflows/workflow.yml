@@ -5,6 +5,12 @@ on:
     # Specify the branches this workflow should run on
     branches:
       - 'feature/**' # Wildcard pattern for feature branches
+  workflow_dispatch:
+    inputs:
+      EXT_1:
+        description: 'An example input parameter'
+        required: false
+        default: 'default_value'
 
 jobs:
   run-script:
@@ -28,7 +34,7 @@ jobs:
         # The GITHUB_REF_NAME variable is automatically available as an environment variable
         run: python src/test.py
         env:
-          EXT_1: "default_value"
+          DEFAULT_EXT_1: "default_ext_1"
           BRANCH_NAME: ${{ github.ref_name }} # Pass the branch name context as an environment variable
       - name: Upload log file as artifact
         uses: actions/upload-artifact@v4

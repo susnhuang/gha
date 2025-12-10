@@ -15,8 +15,8 @@ def test():
     logger.info("Running test function")
     ENV_1 = os.getenv("EXT_1", "")
     logger.info("Test log message %s", ENV_1)
-    if ENV_1 == "default_value":
-        logger.info("default")
+    value = os.getenv("DEFAULT_EXT_1", "") or os.getenv("EXT_1", "")
+    logger.info("value %s", value)
    
 if __name__ == "__main__":
     test()
