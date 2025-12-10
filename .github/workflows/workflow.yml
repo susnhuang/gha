@@ -11,6 +11,7 @@ on:
         description: 'An example input parameter'
         required: false
         default: 'default_value'
+        type: string
 
 jobs:
   run-script:
