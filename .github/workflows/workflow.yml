@@ -7,29 +7,37 @@ on:
       - 'feature/**' # Wildcard pattern for feature branches
   workflow_dispatch:
     inputs:
+      VS_USERNAME:
+        description: 'VS username'
+        required: false
+        type: string
+      VS_PASSWORD:
+        description: 'VS password'
+        required: false
+        type: string
       EXT_1:
         description: 'An example input parameter'
         required: false
-        default: 'default_value'
+        default: '10.11.120.12'
         type: string
-    environment:
-      description: 'Target environment'
-      type: choice
-      required: true
-      options:
-        - dev
-        - qa
-        - prod
-    deploy_version:
-      description: 'Version to deploy'
-      type: string
-      required: false
-      default: 'latest'
-    run_tests:
-      description: 'Run automated tests'
-      type: boolean
-      required: false
-      default: true
+      INT_A:
+        description: 'An integer input parameter'
+        required: false
+        default: '10.11.120.121'
+        type: string
+      INT_B:
+        description: 'An integer input parameter'
+        required: false
+        default: '10.11.120.221'
+        type: string
+      DNODE_USERNAME:
+        description: 'DNode username'
+        required: false
+        type: string
+      DNODE_PASSWORD:
+        description: 'DNode password'
+        required: false
+        type: string
 
 jobs:
   run-script:
