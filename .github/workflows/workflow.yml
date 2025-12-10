@@ -12,6 +12,24 @@ on:
         required: false
         default: 'default_value'
         type: string
+    environment:
+      description: 'Target environment'
+      type: choice
+      required: true
+      options:
+        - dev
+        - qa
+        - prod
+    deploy_version:
+      description: 'Version to deploy'
+      type: string
+      required: false
+      default: 'latest'
+    run_tests:
+      description: 'Run automated tests'
+      type: boolean
+      required: false
+      default: true
 
 jobs:
   run-script:
