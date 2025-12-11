@@ -18,24 +18,24 @@ on:
         type: string
       EXT_1:
         description: 'An example input parameter'
-        required: false
+        required: true
         default: '10.11.120.12'
         type: string
       INT_A:
         description: 'An integer input parameter'
-        required: false
+        required: true
         default: '10.11.120.121'
         type: string
       INT_B:
         description: 'An integer input parameter'
-        required: false
+        required: true
         default: '10.11.120.221'
         type: string
-      DNODE_USERNAME:
+      CNODE_USERNAME:
         description: 'DNode username'
-        required: false
+        required: true
         type: string
-      DNODE_PASSWORD:
+      CNODE_PASSWORD:
         description: 'DNode password'
         required: false
         type: string
@@ -63,11 +63,16 @@ jobs:
         # The GITHUB_REF_NAME variable is automatically available as an environment variable
         run: python src/test.py
         env:
-          CNODE_USERNAME: ${{ vars.CNODE_USERNAME }}
-          CNODE_PASSWORD: ${{ secrets.CNODE_PASSWORD }}
-          JNODE_USERNAME: ${{ vars.JNODE_USERNAME }}
-          JNODE_PASSWORD: ${{ secrets.JNODE_PASSWORD }}
-          DEFAULT_EXT_1: "default_ext_1"
+          CNODE_USERNAME: ${{ inputs.CNODE_USERNAME || vars.CNODE_USERNAME }}
+          # DEFAULT_CNODE_USERNAME: ${{ vars.CNODE_USERNAME }}
+          CNODE_PASSWORD: ${{ inputs.CNODE_PASSWORD || secrets.CNODE_PASSWORD }}
+          JNODE_USERNAME: ${{ inputs.JNODE_USERNAME || vars.JNODE_USERNAME }}
+          JNODE_PASSWORD: ${{ inputs.JNODE_PASSWORD || secrets.JNODE_PASSWORD }}
+          
+          # DEFAULT_CNODE_PASSWORD: ${{ secrets.CNODE_PASSWORD }}
+          # DEFAULT_JNODE_USERNAME: ${{ vars.JNODE_USERNAME }}
+          # DEFAULT_JNODE_PASSWORD: ${{ secrets.JNODE_PASSWORD }}
+          EXT_1: "default_ext_1"
           BRANCH_NAME: ${{ github.ref_name }} # Pass the branch name context as an environment variable
       - name: Upload log file as artifact
         uses: actions/upload-artifact@v4
