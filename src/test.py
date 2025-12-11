@@ -17,6 +17,18 @@ def test():
     logger.info("Test log message %s", ENV_1)
     value = os.getenv("DEFAULT_EXT_1", "") or os.getenv("EXT_1", "")
     logger.info("value %s", value)
-   
+
+    CNODE_USERNAME = os.getenv("CNODE_USERNAME", "")
+    logger.info("Test log message %s", CNODE_USERNAME)
+
+    CNODE_PASSWORD = os.getenv("CNODE_PASSWORD", "")
+    logger.info("Test log message %s", CNODE_PASSWORD)
+
+    JNODE_USERNAME = os.getenv("JNODE_USERNAME", "")
+    logger.info("Test log message %s", JNODE_USERNAME)
+
+    JNODE_PASSWORD = os.getenv("JNODE_PASSWORD", "")
+    logger.info("Test log message %s", JNODE_PASSWORD)
+
 if __name__ == "__main__":
     test()

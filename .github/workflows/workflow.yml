@@ -55,12 +55,17 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          python -m pip install tox
           # Add any other pip install commands here
 
       - name: Execute Python script with branch name env var
         # The GITHUB_REF_NAME variable is automatically available as an environment variable
         run: python src/test.py
         env:
+          CNODE_USERNAME: ${{ vars.CNODE_USERNAME }}
+          CNODE_PASSWORD: ${{ secrets.CNODE_PASSWORD }}
+          JNODE_USERNAME: ${{ vars.JNODE_USERNAME }}
+          JNODE_PASSWORD: ${{ secrets.JNODE_PASSWORD }}
           DEFAULT_EXT_1: "default_ext_1"
           BRANCH_NAME: ${{ github.ref_name }} # Pass the branch name context as an environment variable
       - name: Upload log file as artifact
