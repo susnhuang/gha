@@ -5,6 +5,7 @@ on:
     # Specify the branches this workflow should run on
     branches:
       - 'feature/**' # Wildcard pattern for feature branches
+      - 'main'
   workflow_dispatch:
     inputs:
       VS_USERNAME:
